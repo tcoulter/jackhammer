@@ -28,6 +28,13 @@ $ jackhammer --port 7777 --accounts.count 1 --mining.interval 1000
   <img  src="output.png">
 </p>
 
+### Features
+
+* All the features of the `hardhat node` command
+* Packaged as a helpful CLI
+* No need to create extra configuration! 
+* Can have multiple instances in parallel
+
 ### Parameters
 
 All parameters are derived from the configuration values in the [Hardhat Network Reference](https://hardhat.org/hardhat-network/reference/#config). To turn a configuration option into a parameter, simply use the format `--<configuration name> value`. For nested parameters, like an account mnemonic, use the `.` separator to signal nesting. e.g., `--accounts.mnemonic "essay portion ... churn service"`. 
