@@ -2,7 +2,15 @@
 
 Run a Hardhat Network node from the command line! 
 
-![icon](jackhammer.png)
+<br/>
+<br/>
+
+<p align="center">
+  <img width="200" height="200" src="jackhammer.png">
+</p>
+
+<br/>
+<br/>
 
 ### Install
 
@@ -16,7 +24,9 @@ $ npm install jackhammer -g
 $ jackhammer --port 7777 --accounts.count 1 --mining.interval 1000
 ```
 
-![output](output.png)
+<p align="left">
+  <img height="150" src="output.png">
+</p>
 
 ### Parameters
 
