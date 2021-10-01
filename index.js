@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const yargs = require('yargs/yargs');
 const temp = require("temp");
-const {spawn} = require("child_process");
+const spawn = require('cross-spawn')
 const path = require("path");
 const fs = require("fs").promises;
+const findParentDir = require('find-parent-dir');
 
 temp.track();
 
@@ -139,14 +140,57 @@ let mainConfigObject = {
   }
 }
 
-temp.mkdir('sawsall', async function(err, dirPath) {
+temp.mkdir('jackhammer', async function(err, dirPath) {
   var configPath = path.join(dirPath, 'hardhat.config.js')
   await fs.writeFile(configPath, `
     module.exports = ${JSON.stringify(mainConfigObject, null, 2)}
   `)
 
+  let currentWorkingDirectory = process.cwd();
+  let hardhatCLIPath = null;
+  let spawnWorkingDirectory = currentWorkingDirectory;
+
+  try {
+    let dir = findParentDir.sync(currentWorkingDirectory, "node_modules")
+    let potentialPath = path.join(dir, "node_modules", "hardhat", "internal", "cli", "cli.js");
+    await fs.stat(potentialPath);
+    hardhatCLIPath = potentialPath;
+  } catch (e) {}
+
+  if (hardhatCLIPath == null) {
+    console.log("Hang tight, installing hardhat!");
+    console.log("TIP: Jackhammer can skip this step if you run it within a project with hardhat installed.");
+    console.log("")
+
+    let interval = setInterval(() => {
+      process.stdout.write(".")
+    }, 1000)
+
+    await new Promise((resolve, reject) => {
+      let child = spawn("npm", [
+        "install",
+        "hardhat"
+      ], {
+        stdio: "ignore",
+        cwd: dirPath
+      })
+
+      child.on('exit', function() {
+        resolve();
+      })
+    })
+    
+    clearInterval(interval);
+
+    console.log("")
+    console.log("")
+
+    hardhatCLIPath = path.join(dirPath, "node_modules", "hardhat", "internal", "cli", "cli.js");
+    spawnWorkingDirectory = dirPath;
+  }
+
   let args = [
-    "./node_modules/hardhat/internal/cli/cli.js",
+    hardhatCLIPath,
     "--config",
     path.join(configPath),
     "node"
@@ -161,6 +205,7 @@ temp.mkdir('sawsall', async function(err, dirPath) {
   }
 
   spawn("node", args, {
-    stdio: "inherit"
+    stdio: "inherit",
+    cwd: spawnWorkingDirectory
   })
 });
