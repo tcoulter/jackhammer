@@ -45,7 +45,7 @@ Jackhammer also accepts two parameters not in the Hardhat Network Reference: `--
 
 You'll get the best results if you run `jackhammer` within a project directory that already has hardhat installed! `jackhammer` can take advantage of the already-installed version and use that, much like npx! 
 
-When you run `jackhammer` in a project without harthat installed, `jackhammer` will install hardhat to a persistent temporary directory (`path.join(os.tmpdir(), "__jackhammer_hardhat__")`). This is a one-time install, and future runs will use this installation when it can't be found in the current working directory. 
+When you run `jackhammer` in a project without hardhat installed, `jackhammer` will install hardhat to a persistent temporary directory (`path.join(os.tmpdir(), "__jackhammer_hardhat__")`). This is a one-time install, and future runs will use this installation when it can't be found in the current working directory. 
 
 Why do all this? Well, hardhat doesn't like to be installed globally, and will error if you run a global install. So we circumvent this a bit to have a speedy CLI version. 
 
