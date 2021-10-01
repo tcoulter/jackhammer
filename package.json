@@ -1,0 +1,22 @@
+{
+  "name": "jackhammer",
+  "version": "0.0.1",
+  "description": "Start a hardhat node from the command line",
+  "main": "index.ts",
+  "bin": {
+    "jackhammer": "./index.js",
+    "jh": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Coulter <tim@timothyjcoulter.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "yargs": "^17.2.1"
+  },
+  "dependencies": {
+    "hardhat": "^2.6.4",
+    "temp": "^0.9.4"
+  }
+}
