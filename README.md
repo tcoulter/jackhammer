@@ -47,3 +47,13 @@ Started HTTP and WebSocket JSON-RPC server at http://127.0.0.1:7777/
 ### Contributions
 
 Sure! 
+
+### FAQ
+
+**Why did you build Jackhammer?**
+
+I have a project that needs two test networks in the dev environment and I didn't want to manage two separate hardhat configurations in order to do so. 
+
+**Would I transfer Jackhammer over to the Hardhat team if they wanted to officially support it?**
+
+Of course! 

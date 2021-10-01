@@ -1,7 +1,12 @@
 {
   "name": "jackhammer",
   "version": "0.0.1",
-  "description": "Start a hardhat node from the command line",
+  "description": "Start a Hardhat Network node from the command line",
+  "homepage": "https://github.com/tcoulter/jackhammer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tcoulter/jackhammer"
+  },
   "main": "index.ts",
   "bin": {
     "jackhammer": "./index.js",
