@@ -24,8 +24,8 @@ $ npm install jackhammer -g
 $ jackhammer --port 7777 --accounts.count 1 --mining.interval 1000
 ```
 
-<p align="left">
-  <img height="150" src="output.png">
+<p align="center">
+  <img  src="output.png">
 </p>
 
 ### Parameters
