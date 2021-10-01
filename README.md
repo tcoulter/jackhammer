@@ -34,6 +34,16 @@ All parameters are derived from the configuration values in the [Hardhat Network
 
 Jackhammer also accepts two parameters not in the Hardhat Network Reference: `--port` and `--hostname`. These work exactly the same way as they do when running `hardhat node`. 
 
+### But read this! 
+
+You'll get the best results if you run `jackhammer` within a project directory that already has hardhat installed! `jackhammer` can take advantage of the already-installed version and use that, much like npx! 
+
+When you run `jackhammer` in a project without harthat installed, `jackhammer` will install hardhat to a persistent temporary directory (`path.join(os.tmpdir(), "__jackhammer_hardhat__")`). This is a one-time install, and future runs will use this installation when it can't be found in the current working directory. 
+
+Why do all this? Well, hardhat doesn't like to be installed globally, and will error if you run a global install. So we circumvent this a bit to have a speedy CLI version. 
+
+**Wanna help?** Add a `--clean` flag that'll get rid of the persistent temporary directory so that `jackhammer` can always use the latest version.
+
 ### Bonus! 
 
 Jackhammer provides a handy `jh` shortcut command along with `jackhammer` for those of you that like shortcuts. Happy day! 
